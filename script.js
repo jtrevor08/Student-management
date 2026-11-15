@@ -66,3 +66,14 @@ function createElementWithText(tagName, text, cssClass) {
   }
   return element;
 }
+
+function calculateStatistics (){
+    let totalStudents = students.length;
+    let passedCount = 0
+    let failedCount = 0
+    let marksSum = 0
+    let highest = null
+    let lowest = null
+
+    const bandCounts = {"Excellent": 0, "Very"}
+}
