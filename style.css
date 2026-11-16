@@ -203,8 +203,51 @@ textarea {
   gap: 16px;
   margin-bottom: 8px;
 }
+p {
+  display: block;
+  direction: row;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  text-align: left;
+}
 .group-width {
   grid-column: 1 / -1;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.course-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.course-card {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: justify;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.stats-grid > .course-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.course-card > h3 {
+  margin: 10px 0;
+  font-size: 1.4rem;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  background: #d98a06;
+  border-radius: 8px;
 }
 .from-group {
   display: flex;
