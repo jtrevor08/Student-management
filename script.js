@@ -171,3 +171,63 @@ function renderPerformanceBars(stats) {
     const countLabel = createElementWithText("span", count, "performance-count");
   
 }
+}
+
+function getVisibleStudents() {
+  const visible = [];
+  for (let i = 0; i < students.length; i++) {
+    if (currentCourseFilter === "All" || students[i].course === currentCourseFilter) {
+      visible.push(students[i]);
+    }
+  }
+
+  if (sortByMarksHighToLow) {
+    visible.sort(function(a, b) { return b.marks - a.marks; });
+
+  }
+  return visible;
+}
+
+function buildStudentRow(student) {
+  const row = document.createElement("tr");
+  const classification = getClassification(student.marks);
+
+  row.appendChild(createElementWithText("td", student.id));
+  row.appendChild(createElementWithText("td", student.name));
+  row.appendChild(createElementWithText("td", student.age));
+  row.appendChild(createElementWithText("td", student.gender));
+  row.appendChild(createElementWithText("td", student.course));
+  row.appendChild(createElementWithText("td", student.marks));
+
+  const marksCell = document.createElement("td");
+
+  if (editingStudentId === student.id) {
+    const input = document.createElement("input");
+    input.type = "number";
+    input.value = student.marks;
+    input.min = 0;
+    input.max = 100;
+    marksCell.appendChild(input);
+  } else {
+    marksCell.textContent = student.marks;
+  }
+  row.appendChild(marksCell);
+
+  const status = getStatus(student.marks);
+  row.appendChild(createElementWithText("td", status));
+  const classificationCell = document.createElement("td");
+  classificationCell.textContent = classification;
+  classificationCell.className = getClassificationCssClass(classification);
+  row.appendChild(classificationCell);    
+
+  const actionsCell = document.createElement("td");
+  actionsCell.appendChild(createActionButton("Edit", function() { editStudent(student.id); }));
+  if (editingStudentId === student.id) {
+    actionsCell.appendChild(createActionButton("Save", function() { saveStudent(student.id); }));
+    actionsCell.append(
+      makeActionButton("Cancel", function() { cancelEdit(); })
+      );
+    } else {
+      actionsCell.appendChild(createActionButton("Delete", function() { deleteStudent(student.id); }));
+    }
+    
