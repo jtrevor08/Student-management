@@ -50,7 +50,7 @@ nav > ul > li > a {
   box-shadow: 10px;
 }
 .logo {
-  color: #fff;
+  color: black;
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: bold;
@@ -84,7 +84,7 @@ nav > ul > li > a {
   margin: 15px;
 }
 .container {
-  background-color: #0c65e0;
+  background-color: #fff;
   padding: 0px;
 }
 .container > nav > ul > li {
